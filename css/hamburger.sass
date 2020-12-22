@@ -1,0 +1,130 @@
+@import "prefixes"
+@import "variables"
+
+.header__hamburger, .headerNav_adaptive
+  display: none
+
+.adaptive-menu-toggle
+  display: block
+  width: 30px
+  height: 24px
+  z-index: 99
+  position: relative
+  margin: auto
+
+.menu-toggle-inner
+  width: 100%
+  height: 100%
+  position: absolute
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+  margin: auto
+
+.menu-toggle-line
+  position: absolute
+  background: red
+  display: block
+  margin: auto
+  height: 4px
+  width: 100%
+  +border-radius(3px)
+
+.menu-toggle-line--1
+  top: 0
+  @include transition(width 0.2s ease 0.3s)
+
+
+.menu-toggle-line--2
+  top: 0
+  bottom: 0
+  margin: auto
+  @include transition(width 0.2s ease 0.3s)
+
+.menu-toggle-line--3
+  bottom: 0
+  @include transition(width 0.2s ease 0.3s)
+
+.menu-toggle-line--4,
+.menu-toggle-line--5
+  opacity: 0
+  top: 10px
+
+.menu-toggle-line--4
+  -webkit-transition: opacity 0.2s ease 0.2s, -webkit-transform 0.2s ease 0.2s
+  transition: opacity 0.2s ease 0.2s, -webkit-transform 0.2s ease 0.2s
+  -o-transition: opacity 0.2s ease 0.2s, -o-transform 0.2s ease 0.2s
+  -moz-transition: opacity 0.2s ease 0.2s, transform 0.2s ease 0.2s, -moz-transform 0.2s ease 0.2s
+
+.menu-toggle-line--5
+  -webkit-transition: opacity 0.2s ease 0s, -webkit-transform 0.2s ease 0s
+  transition: opacity 0.2s ease 0s, -webkit-transform 0.2s ease 0s
+  -o-transition: opacity 0.2s ease 0s, -o-transform 0.2s ease 0s
+  -moz-transition: opacity 0.2s ease 0s, transform 0.2s ease 0s, -moz-transform 0.2s ease 0s
+
+.adaptive-menu-toggle--open .menu-toggle-line
+  background: red
+
+.adaptive-menu-toggle--open .menu-toggle-line--1
+  width: 0
+  @include transition(width 0.2s ease 0s)
+
+.adaptive-menu-toggle--open .menu-toggle-line--2
+  width: 0
+  @include transition(width 0.2s ease 0.1s)
+
+.adaptive-menu-toggle--open .menu-toggle-line--3
+  width: 0
+  @include transition(width 0.2s ease 0.2s)
+
+.adaptive-menu-toggle--open .menu-toggle-line--4
+  opacity: 1
+  +transform(rotate(45deg) translateZ(0))
+  -webkit-transition: opacity 0.2s ease 0.2s, -webkit-transform 0.2s ease 0.2s
+  transition: opacity 0.2s ease 0.2s, -webkit-transform 0.2s ease 0.2s
+  -o-transition: opacity 0.2s ease 0.2s, -o-transform 0.2s ease 0.2s
+  -moz-transition: opacity 0.2s ease 0.2s, transform 0.2s ease 0.2s, -moz-transform 0.2s ease 0.2s
+
+.adaptive-menu-toggle--open .menu-toggle-line--5
+  opacity: 1
+  +transform(rotate(-45deg) translateZ(0))
+  -webkit-transition: opacity 0.2s ease 0.4s, -webkit-transform 0.2s ease 0.4s
+  transition: opacity 0.2s ease 0.4s, -webkit-transform 0.2s ease 0.4s
+  -o-transition: opacity 0.2s ease 0.4s, -o-transform 0.2s ease 0.4s
+  -moz-transition: opacity 0.2s ease 0.4s, transform 0.2s ease 0.4s, -moz-transform 0.2s ease 0.4s
+
+@media only screen and (max-width: 640px)
+  .header__hamburger
+    display: block !important
+    position: absolute
+    right: 10px
+    top: 20px
+
+  .headerNav_adaptive
+    background: grey
+    display: none
+    padding-top: 60px
+    position: absolute
+    top: 0
+    +transform(translateX(-100%))
+    width: 100%
+    z-index: 3
+
+  .header_opened
+    display: block !important
+    +transform(translateX(0))
+
+  .headerNav__items_adaptive a
+    background: grey
+    border: $textBlack 1px solid
+    border-bottom: none
+    color: red
+    display: block
+    font-family: "Museo Sans Cyrl -300", sans-serif
+    font-size: 17px
+    padding: 10px
+    text-decoration: none
+
+  .headerNav__items_adaptive li:last-child a
+    border-bottom: $textBlack 1px solid
