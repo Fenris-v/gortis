@@ -2,6 +2,7 @@
 @import "prefixes"
 /* RESET */
 @import "normalize"
+@import "../node_modules/slick-carousel/slick/slick"
 
 body
   width: 100%
@@ -29,6 +30,7 @@ body
   @include border-radius(25px)
   padding: 0 50px
   text-decoration: none
+  @include box-sizing()
 
   &_blue
     background: $blue
@@ -55,7 +57,7 @@ header
   align-items: center
 
   &__nav
-    ul
+    > ul
       display: flex
       align-items: center
       list-style: none
@@ -63,6 +65,8 @@ header
       padding: 0
 
       li
+        position: relative
+
         &:not(:last-child)
           margin-right: 30px
 
@@ -104,6 +108,21 @@ header
 
       img
         margin-left: 10px
+
+.submenu
+  position: absolute
+  background: $white
+  z-index: 1
+  flex-direction: column
+  list-style: none
+  border: 1px solid $blue
+  top: 85%
+  display: none
+
+  li a
+    white-space: nowrap
+    line-height: 1.3 !important
+    height: auto !important
 
 .logo
   display: flex
@@ -218,9 +237,10 @@ header
 .center
   text-align: center
   position: relative
-  background: url("../images/center.jpeg") center center no-repeat
+  background: url("../images/center.jpeg") center top no-repeat
   padding: 60px
   @include box-sizing()
+  background-size: cover
 
   &_top
     position: relative
@@ -377,13 +397,12 @@ header
         text-decoration: underline
 
   &__items
-    display: flex
-    justify-content: space-between
+    margin: 0 -20px
 
     &__item
-      width: 31%
       border-bottom: 1px solid $grey
       padding-bottom: 30px
+      margin: 0 20px 40px
 
       &__img
         width: 100%
@@ -404,6 +423,7 @@ header
           bottom: 0
           left: 0
           position: absolute
+          display: flex
 
           img
             margin-right: 10px
@@ -420,6 +440,41 @@ header
       &__anons
         opacity: 0.6
         @include font($textBlack, $regular, normal, 15px, 1.3)
+
+.slick-slide, .news__items__item__title
+  &:focus
+    outline: none
+
+.slick-dots
+  display: flex
+  list-style: none
+  padding: 0
+  margin: 0
+  justify-content: center
+
+  li
+    font-size: 0
+    padding: 5px
+    border: 1px solid transparent
+    @include border-radius()
+    @include box-sizing()
+
+    &:not(:last-child)
+      margin-right: 10px
+
+    &.slick-active
+      border: 1px solid $blue
+
+      button
+        background: $blue
+
+    button
+      border: none
+      padding: 0
+      background: $lightBlue
+      width: 10px
+      height: 10px
+      @include border-radius()
 
 .footer
   &_top

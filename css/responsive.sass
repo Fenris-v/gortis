@@ -1,4 +1,137 @@
 @import "variables"
 @import "prefixes"
 
-@media only screen and (max-width: 1200px)
+@media only screen and (max-width: 1500px)
+  .services__item p
+    font-size: 30px
+
+@media only screen and (max-width: 1100px)
+  .header__nav
+    display: none
+
+  .header
+    justify-content: space-around
+    padding: 10px 0
+
+  .wrapper, .wrapper.wrapper_fullHD
+    padding: 0 15px
+
+  .firstScreen_bottom__title
+    margin-left: 15px
+
+  .services
+    flex-wrap: wrap
+    height: auto
+
+    &__item
+      width: 50%
+
+  .footer__info
+    flex-wrap: wrap
+
+    .footer__info__contacts
+      margin-bottom: 20px
+
+    .social
+      width: 100%
+      justify-content: center
+
+  .footer_bottom
+    .links
+      display: flex
+      flex-direction: column
+      line-height: 1.3
+
+@media only screen and (max-width: 900px)
+  .firstScreen_bottom
+    .wrapper
+      display: flex
+      flex-direction: column
+      align-items: flex-start
+
+  .firstScreen_bottom__title
+    margin-bottom: 50px
+    font-size: 80px
+
+  .firstScreen__logo
+    position: static
+    margin-left: auto
+    margin-bottom: 30px
+
+  .firstScreen_bottom__items
+    flex-wrap: wrap
+
+    &__item
+      width: 48%
+
+  .s_news
+    margin-bottom: 50px
+
+  .footer__nav
+    flex-direction: column
+
+  .footer__info__contacts
+    width: 50%
+    text-align: right
+
+  .footer__info
+    .logo
+      margin-bottom: 20px
+
+    .social
+      width: 50%
+      justify-content: flex-end
+
+  .footer_bottom .wrapper
+    display: flex
+    flex-direction: column
+
+  .footer_bottom a:first-child
+    margin-right: 0
+
+@media only screen and (max-width: 640px)
+  .header
+    flex-direction: column
+    margin-bottom: 30px
+
+    .logo
+      margin-bottom: 20px
+
+  .header__contacts
+    text-align: center
+
+    .callback
+      justify-content: center
+
+  .firstScreen_top h1
+    font-size: 28px
+    margin-bottom: 0
+
+  .firstScreen_top__container
+    flex-direction: column
+
+    p
+      width: 100%
+
+    a
+      margin-left: auto
+
+  .advantages__item
+    flex-direction: column
+    margin-bottom: 30px
+
+    &__icon
+      margin: 0 0 20px
+
+  .about
+    flex-wrap: wrap
+
+    &_left, &_right
+      width: 100%
+
+    &_left
+      padding: 40px 0
+
+  .services__item
+    width: 100%
+    padding:  100px 20px 40px
