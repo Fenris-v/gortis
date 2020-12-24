@@ -22,9 +22,11 @@
   .services
     flex-wrap: wrap
     height: auto
+    justify-content: space-between
 
     &__item
-      width: 50%
+      width: 49.5%
+      margin: 0 0 5px
 
   .footer__info
     flex-wrap: wrap
@@ -64,6 +66,10 @@
     &__item
       width: 48%
 
+  .services
+    .btn_mobile
+      display: inline-block
+
   .s_news
     margin-bottom: 50px
 
@@ -88,6 +94,30 @@
 
   .footer_bottom a:first-child
     margin-right: 0
+
+  .company__items__item
+    margin: 0 20px
+
+  .articles__item
+    img
+      width: 200px
+
+  .servicesBlock ul li
+    width: 50%
+
+  .servicesBlock ul li:nth-child(3) .border
+    border-left: 1px solid $darkGrey
+    border-right: none
+    border-top: none
+
+  .servicesBlock ul li:nth-child(4) .border
+    border-right: 1px solid $darkGrey
+
+  .servicesBlock ul li:nth-child(5) .border
+    border-right: none
+
+  .servicesBlock ul li:nth-child(6) .border
+    border-left: 1px solid $darkGrey
 
 @media only screen and (max-width: 640px)
   .header
@@ -135,3 +165,60 @@
   .services__item
     width: 100%
     padding:  100px 20px 40px
+
+  .company__desc
+    padding: 30px
+
+  .company__items
+    flex-direction: column
+    margin-top: 30px
+
+    &__item
+      width: 100%
+      flex-direction: row
+      margin: 0 0 20px
+
+      p
+        text-align: left
+
+      &__icon
+        flex-shrink: 0
+        margin-right: 20px
+
+  .monitoring
+    flex-direction: column
+
+    &__content
+      margin-bottom: 20px
+
+    &__content, &__img
+      width: 100%
+
+  .monitoring:last-child
+    flex-direction: column
+
+  .monitoring:first-child .monitoring__img, .monitoring:last-child .monitoring__img
+    padding: 0
+
+  .help__items li
+    flex-wrap: wrap
+    justify-content: space-between
+
+  .help__items__name
+    width: 100%
+    margin: 0 0 20px
+
+  .help__items__desc
+    width: 80%
+    margin-right: 0
+
+  .articles__item
+    flex-direction: column
+
+    img
+      width: auto
+      height: 150px
+      margin: 0 0 20px
+
+  .servicesBlock ul li .border
+    padding: 20px 10px
