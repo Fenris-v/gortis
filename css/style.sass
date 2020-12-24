@@ -42,6 +42,11 @@ body
       img
         margin-left: 10px
 
+  &_border
+    border: 2px solid $blue
+    line-height: 46px
+    color: $blue
+
 header
   margin-bottom: 50px
 
@@ -350,18 +355,24 @@ header
     position: relative
     padding: 150px 60px 220px
     @include box-sizing()
+    overflow: hidden
+
+    &:hover
+      .services__item__more
+        top: 0
+        @include transition()
 
     &:nth-child(1)
-      background: url("../images/staff.png") center center no-repeat
+      background: url("../images/1.jpg") center center no-repeat
 
     &:nth-child(2)
-      background: url("../images/staff.png") center center no-repeat
+      background: url("../images/2.jpg") center center no-repeat
 
     &:nth-child(3)
-      background: url("../images/staff.png") center center no-repeat
+      background: url("../images/3.jpg") center center no-repeat
 
     &:nth-child(4)
-      background: url("../images/staff.png") center center no-repeat
+      background: url("../images/4.jpg") center center no-repeat
 
     &__num
       @include font($white, $bold, bold, 80px)
@@ -372,8 +383,42 @@ header
     img, p
       position: relative
 
+    > img
+      height: 80px
+
     p
       @include font($white, $regular, normal, 36px)
+
+    &__more
+      background: $grey
+      top: 100%
+      bottom: 0
+      left: 0
+      right: 0
+      position: absolute
+      padding: 140px 50px 30px
+      @include transition()
+
+      .btns
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-around
+
+        > .btn
+          padding: 0 30px
+          margin-bottom: 20px
+
+      &__title
+        @include font($textBlack, $medium, 500, 36px)
+        margin-bottom: 30px
+
+      p
+        margin: 0 0 30px
+        @include font($textBlack, $regular, normal, 15px)
+
+      &__offer
+        @include font($blue, $medium, 500, 24px)
+        margin-bottom: 40px
 
 .innerTitle
   @include font($textBlack, $medium, 500, 30px)
