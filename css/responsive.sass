@@ -119,6 +119,15 @@
   .servicesBlock ul li:nth-child(6) .border
     border-left: 1px solid $darkGrey
 
+  .container
+    flex-direction: column
+
+  aside
+    display: flex
+
+  .aside__item:first-child
+    margin-right: 20px
+
 @media only screen and (max-width: 640px)
   .header
     flex-direction: column
@@ -222,3 +231,13 @@
 
   .servicesBlock ul li a
     padding: 20px 10px
+
+  .service__items__item
+    width: 100%
+
+    &:nth-child(even)
+      border-left: 1px solid $darkGrey
+
+    &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5), &:nth-child(6)
+      border-top: none
+      border-bottom: 1px solid $darkGrey

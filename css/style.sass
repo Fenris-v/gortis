@@ -660,6 +660,7 @@ header
 
     li
       @include font(#AEAEAE, $regular, normal, 16px)
+      white-space: nowrap
 
       &:not(:last-child)
         &::after
@@ -796,7 +797,7 @@ header
       width: 40px
       flex-shrink: 0
 
-      a
+      a, p
         background: $blue
         @include border-radius()
         width: 40px
@@ -806,6 +807,7 @@ header
         align-items: center
         overflow: hidden
         @include transform(rotate(-45deg))
+        margin: 0
 
         img
           @include transform(translateX(-30%))
@@ -819,6 +821,11 @@ header
 .s_servicesBlock
   margin-bottom: 70px
 
+.border
+  width: 100%
+  height: 100%
+  border: 1px solid $darkGrey
+
 .servicesBlock
   ul
     list-style: none
@@ -831,11 +838,6 @@ header
       width: calc(100% / 3)
       flex-shrink: 0
       text-align: center
-
-      .border
-        width: 100%
-        height: 100%
-        border: 1px solid $darkGrey
 
       &:nth-child(1), &:nth-child(4)
         .border
@@ -941,6 +943,173 @@ header
             height: auto
             margin: 0
             @include transform(translateX(-50%))
+
+//SERVICE INNER
+.container
+  display: flex
+  justify-content: space-between
+
+.service
+  img
+    width: 100%
+    @include object-fit(contain)
+    margin-bottom: 50px
+
+  .innerTitle
+    margin-bottom: 50px
+
+  p
+    @include font($textBlack, $regular, normal, 15px, 1.5)
+    margin-bottom: 50px
+
+  &__quote
+    display: flex
+    justify-content: space-between
+    align-items: flex-start
+    margin-bottom: 50px
+
+    &__icon
+      width: 80px
+      height: 80px
+      background: $grey
+      @include border-radius()
+      display: flex
+      justify-content: center
+      align-items: center
+      margin-right: 40px
+      flex-shrink: 0
+
+      img
+        max-width: 30px
+        margin: 0
+
+    p.service__quote__content
+      @include font($textBlack, $regular, normal, 18px, 1.6)
+      margin: 0
+
+  .help__items__link p img, .help__items__link p
+    margin-bottom: 0
+
+  .help__items__link
+    margin-right: 40px
+
+  &__items
+    display: flex
+    flex-wrap: wrap
+    margin-bottom: 50px
+
+    &__item
+      width: 50%
+      text-decoration: none
+
+      &:hover
+        background: $grey
+        @include transition()
+
+      .border
+        display: flex
+        padding: 40px
+        @include box-sizing()
+
+      &:nth-child(even) .border
+        border-left: none
+
+      &:nth-child(3), &:nth-child(4)
+        .border
+          border-bottom: none
+          border-top: none
+
+      &__content
+        &__title
+          @include font($blue, $medium, 500, 18px, 1.6)
+          margin-bottom: 20px
+
+        p
+          margin: 0
+          line-height: 1.6
+
+aside
+  width: 250px
+  flex-shrink: 0
+  margin-left: 40px
+
+  .aside
+    &__item
+      padding: 50px 30px
+      text-align: center
+      display: flex
+      flex-direction: column
+      align-items: center
+      text-decoration: none
+      margin-bottom: 20px
+
+      &.file
+        border: 15px solid $darkGrey
+        @include transition()
+
+        &:hover
+          background: $darkGrey
+          @include transition()
+
+        .aside__item__icon
+          width: 100px
+          height: 100px
+          @include border-radius()
+          display: flex
+          justify-content: center
+          align-items: center
+          background: rgb(28, 106, 174)
+          background: linear-gradient(100deg, rgba(28, 106, 174, 1) 0%, rgba(65, 140, 192, 1) 100%)
+          margin-bottom: 30px
+
+          img
+            max-width: 50px
+            max-height: 50px
+
+        .aside__item__title
+          @include font($textBlack, $medium, 500, 18px)
+          @include transition()
+          margin-bottom: 15px
+
+        &:hover .aside__item__title
+          color: $blue
+          @include transition()
+
+        .file__info
+          opacity: 0.6
+          color: $textBlack
+
+      &.blue
+        background: rgb(28, 106, 174)
+        background: linear-gradient(100deg, rgba(28, 106, 174, 1) 0%, rgba(65, 140, 192, 1) 100%)
+        @include transition()
+
+        &:hover
+          opacity: 0.8
+          @include transition()
+
+        .aside__item
+          &__icon
+            @include border-radius()
+            width: 100px
+            height: 100px
+            display: flex
+            justify-content: center
+            align-items: center
+            border: 1px solid $grey
+            margin-bottom: 30px
+
+            img
+              max-width: 50px
+              max-height: 50px
+
+          &__title
+            @include font($white, $medium, 500, 18px)
+            @include transition()
+            margin-bottom: 15px
+
+          &__offer
+            color: $white
 
 @import "hamburger"
 
