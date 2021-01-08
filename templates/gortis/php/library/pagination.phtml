@@ -1,0 +1,57 @@
+<?php
+/**
+ * Пагинация
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+$pagination = $this->macros(
+    'system',
+    'numpages',
+    [$variables['services']['total'], $variables['services']['per_page']]
+);
+
+if ($pagination): ?>
+    <div class="pagnum">
+        <ul class="pagination_numbers">
+            <?php
+            if (isset($pagination['toprev_link'])): ?>
+                <li class="prev">
+                    <a href="<?= $variables['request-uri'] . $pagination['toprev_link']['value'] ?>"
+                       class="case__btn__link">←</a>
+                </li>
+            <?php
+            endif; ?>
+
+            <?php
+            foreach ($pagination['pages'] as $page): ?>
+                <?php
+                if (isset($page['is-active'])): ?>
+                    <li class="active">
+                        <a class="case__btn__link case__btn__link-active"><?= $page['num'] ?></a>
+                    </li>
+                <?php
+                else: ?>
+                    <li>
+                        <a href="<?= $variables['request-uri'] . $page['link'] ?>" class="case__btn__link">
+                            <?= $page['num'] ?>
+                        </a>
+                    </li>
+                <?php
+                endif; ?>
+            <?php
+            endforeach; ?>
+
+            <?php
+            if (isset($pagination['tonext_link'])): ?>
+                <li class="next">
+                    <a href="<?= $variables['request-uri'] . $pagination['tonext_link']['value'] ?>"
+                       class="case__btn__link">→</a>
+                </li>
+            <?php
+            endif; ?>
+        </ul>
+    </div>
+<?php
+endif;

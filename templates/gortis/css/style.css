@@ -1675,6 +1675,22 @@ aside {
       aside .aside__item.blue .aside__item__offer {
         color: #ffffff; }
 
+.pagnum {
+  display: flex;
+  justify-content: center; }
+
+.pagination_numbers {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center; }
+  .pagination_numbers li:not(:last-child) {
+    margin-right: 20px; }
+
+.case__btn__link {
+  text-decoration: none; }
+
 @font-face {
   font-family: TTN;
   src: url(../fonts/TTNorms-Regular.ttf); }

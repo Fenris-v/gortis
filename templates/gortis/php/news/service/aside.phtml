@@ -1,0 +1,33 @@
+<?php
+/**
+ * Боковое меню
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+?>
+
+<aside>
+    <?php
+    if ($variables['page']->getValue('doc')): ?>
+        <a href="<?= $variables['page']->getValue('doc')->getFilePath(true) ?>" class="aside__item file" download>
+            <div class="aside__item__icon">
+                <img src="<?= $this->getCommonVar('base') ?>images/download.png" alt="icon">
+            </div>
+            <div class="aside__item__title">Скачайте и заполните бриф</div>
+            <div class="file__info"><?= $variables['page']->getValue('doc')->getExt() ?>,
+                <?= $this->macros('system', 'getSize', [$variables['page']->getValue('doc')->getFilePath(), 'K']) ?> kB
+            </div>
+        </a>
+    <?php
+    endif; ?>
+
+    <a href="#" class="aside__item blue">
+        <div class="aside__item__icon">
+            <img src="<?= $this->getCommonVar('base') ?>images/energy-management.png" alt="icon">
+        </div>
+        <div class="aside__item__title">Заказать консультацию</div>
+        <div class="aside__item__offer">Бесплатно</div>
+    </a>
+</aside>

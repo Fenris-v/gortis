@@ -8,164 +8,38 @@
 
 ?>
 
-<section class="s_servicesBlock">
-    <div class="wrapper">
-        <div class="servicesBlock">
-            <ul>
-                <li>
-                    <div class="border">
-                        <a href="#">
-                            <div class="servicesBlock__icon">
-                                <img src="images/services/line-graph.png" alt="icon">
+    <section class="s_servicesBlock">
+        <div class="wrapper">
+            <div class="servicesBlock">
+                <ul>
+                    <?php
+                    foreach (
+                        $this->macros('content', 'menu', [null, 1, 13], ['icon'])['items'] as $item
+                    ): ?>
+                        <li>
+                            <div class="border">
+                                <a href="<?= $item['link'] ?>">
+                                    <div class="servicesBlock__icon">
+                                        <img src="<?= $item['extended']['properties'][0]->getValue()->getFilePath(
+                                            true
+                                        ) ?>"
+                                             alt="<?= $item['extended']['properties'][0]->getValue()->getAlt() ?>"
+                                             title="<?= $item['extended']['properties'][0]->getValue()->getTitle() ?>">
+                                    </div>
+
+                                    <p><?= $item['name'] ?></p>
+                                </a>
                             </div>
-
-                            <p>Маркетинговые исследования</p>
-                        </a>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="border">
-                        <a href="#">
-                            <div class="servicesBlock__icon">
-                                <img src="images/services/newspaper.png" alt="icon">
-                            </div>
-
-                            <p>Мониторинг традиционных СМИ</p>
-                        </a>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="border">
-                        <a href="#">
-                            <div class="servicesBlock__icon">
-                                <img src="images/services/rating.png" alt="icon">
-                            </div>
-
-                            <p>Мониторинг социальных медиа</p>
-                        </a>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="border">
-                        <a href="#">
-                            <div class="servicesBlock__icon">
-                                <img src="images/services/analytics.png" alt="icon">
-                            </div>
-
-                            <p>Мониторинг рекламы в прессе</p>
-                        </a>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="border">
-                        <a href="#">
-                            <div class="servicesBlock__icon">
-                                <img src="images/services/team.png" alt="icon">
-                            </div>
-
-                            <p>Медиа-анализ в традиционных СМИ и соц.медиа</p>
-                        </a>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="border">
-                        <a href="#">
-                            <div class="servicesBlock__icon">
-                                <img src="images/services/infographic.png" alt="icon">
-                            </div>
-
-                            <p>Аудитории СМИ</p>
-                        </a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<section class="s_articles">
-    <div class="wrapper">
-        <div class="articles">
-            <div class="articles__item">
-                <img src="images/services/art.jpeg" alt="photo">
-
-                <div class="articles__item__content">
-                    <a href="#" class="articles__item__content__title">
-                        Информационно-Поисковая Система GortisMonitoringSystem
-                    </a>
-                    <p>Назначение и основные возможности Традиционные способы поставки мониторинговой информации –
-                        рассылки по электронной почте, поставка на электронном носителе, поставка в бумажном виде. GMS
-                        расширяет возможности клиента в повседневной работе…</p>
-                    <a class="articles__item__content__more" href="#">
-                        Подробнее
-                        <div>
-                            <img src="images/down-arrow-light.png" alt="icon">
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="articles__item">
-                <img src="images/services/art2.jpeg" alt="photo">
-
-                <div class="articles__item__content">
-                    <a href="#" class="articles__item__content__title">
-                        Программный комплекс Проба-Медиа
-                    </a>
-                    <p>ИФ «Гортис» представляет программно-информационный комплекс «ПРОБА-Мedia» — программу для
-                        специалистов по планированию рекламных акций в СМИ. НАЗНАЧЕНИЕ Анализ медиапредпочтений целевых
-                        групп рекламного воздействия Расчет основных показателей коммуникативной…</p>
-                    <a class="articles__item__content__more" href="#">
-                        Подробнее
-                        <div>
-                            <img src="images/down-arrow-light.png" alt="icon">
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="articles__item">
-                <img src="images/services/art3.jpeg" alt="photo">
-
-                <div class="articles__item__content">
-                    <a href="#" class="articles__item__content__title">
-                        PR-Media
-                    </a>
-                    <p>Демонстрационная версия программы PRMedia. ИФ «ГОРТИС» представляет принципиально новый
-                        программный продукт – PR-media. PR-media – это информационно-программный комплекс для
-                        специалистов, работающих в сфере PR. Программа PR-media представлена на рынке в…</p>
-                    <a class="articles__item__content__more" href="#">
-                        Подробнее
-                        <div>
-                            <img src="images/down-arrow-light.png" alt="icon">
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="articles__item">
-                <img src="images/services/art4.jpeg" alt="photo">
-
-                <div class="articles__item__content">
-                    <a href="#" class="articles__item__content__title">
-                        GR Media
-                    </a>
-                    <p>GR – Media является уникальным информационно – программным комплексом, созданный ИФ «Гортис» для
-                        повседневной эффективной деятельности GR специалистов компаний - заказчиков. Основной целью
-                        создания информационно – программного комплекса GR – Media является повышение эффективности…</p>
-                    <a class="articles__item__content__more" href="#">
-                        Подробнее
-                        <div>
-                            <img src="images/down-arrow-light.png" alt="icon">
-                        </div>
-                    </a>
-                </div>
+                        </li>
+                    <?php
+                    endforeach; ?>
+                </ul>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+<?php
+if ((int)$variables['pageId'] !== 13): ?>
+    <?= $this->render($variables, 'content/home/children') ?>
+<?php
+endif;

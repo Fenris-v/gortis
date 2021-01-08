@@ -1,0 +1,50 @@
+<?php
+/**
+ * Услуги категории
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+$services = $this->macros('news', 'lastlist', [$variables['pageId'], null, 4], ['anons_pic', 'anons']);
+
+if (!empty($services)): ?>
+    <section class="s_articles">
+        <div class="wrapper">
+            <div class="articles" <?= $services['total'] > $services['per_page'] ? 'style="margin-bottom: 20px;"' : '' ?>>
+                <?php
+                foreach ($services['items'] as $item): ?>
+                    <div class="articles__item">
+                        <img src="<?= $this->macros(
+                            'system',
+                            'makeThumbnailFull',
+                            [$item['extended']['properties'][0]->getValue()->getFilePath(), 300, 'auto']
+                        )['src'] ?>"
+                             title="<?= $item['extended']['properties'][0]->getValue()->getTitle() ?>"
+                             alt="<?= $item['extended']['properties'][0]->getValue()->getAlt() ?>">
+
+                        <div class="articles__item__content">
+                            <a href="<?= $item['link'] ?>" class="articles__item__content__title">
+                                <?= $item['name'] ?>
+                            </a>
+                            <?= $item['extended']['properties'][1]->getValue() ?>
+                            <a class="articles__item__content__more" href="<?= $item['link'] ?>">
+                                Подробнее
+                                <div>
+                                    <img src="<?= $this->getCommonVar('base') ?>images/down-arrow-light.png" alt="icon">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                <?php
+                endforeach; ?>
+            </div>
+
+            <?= $this->render(
+                ['request-uri' => $variables['request-uri'], 'services' => $services],
+                'library/pagination'
+            ) ?>
+        </div>
+    </section>
+<?php
+endif;

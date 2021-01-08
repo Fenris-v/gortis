@@ -1,0 +1,49 @@
+<?php
+/**
+ * Услуга
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+?>
+
+<main class="container wrapper">
+    <section class="s_service">
+        <div class="service">
+            <?php
+            if ($variables['page']->getValue('top_photo')): ?>
+                <img src="<?= $this->macros(
+                    'system',
+                    'makeThumbnailFull',
+                    [$variables['page']->getValue('top_photo')->getFilePath(), 900, 'auto']
+                )['src'] ?>" alt="photo">
+            <?php
+            endif; ?>
+
+            <div class="innerTitle">
+            </div>
+
+            <div class="service__quote">
+                <div class="service__quote__icon">
+                    <img src="<?= $this->getCommonVar('base') ?>images/left-quote.png" alt="icon">
+                </div>
+                <p class="service__quote__content">
+                    <?= $variables['page']->getValue('quote') ?>
+                </p>
+            </div>
+
+            <?= $variables['page']->getValue('content') ?>
+
+            <div class="service__items">
+                <?php
+                if ($variables['page']->getValue('similar_services')): ?>
+                    <?= $this->render($variables['page']->getValue('similar_services'), 'news/service/similar') ?>
+                <?php
+                endif; ?>
+            </div>
+        </div>
+    </section>
+
+    <?= $this->render($variables, 'news/service/aside') ?>
+</main>

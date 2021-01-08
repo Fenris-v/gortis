@@ -149,7 +149,7 @@ $news = umiHierarchy::getInstance()->getElement(20);
         <div class="services">
             <?php
             $servicesCounter = 1;
-            foreach ($this->macros('content', 'menu', [null, 1, 13], ['photo', 'icon', 'h1', 'readme'])['items'] as $item):
+            foreach ($this->macros('menu', 'draw', ['main_services'], ['photo', 'icon', 'h1', 'readme'])['item'] as $item):
                 $childrenCount = umiHierarchy::getInstance()->getChildrenCount($item['id']); ?>
                 <div class="services__item" style="background: url(<?= $this->macros(
                     'system',
@@ -174,7 +174,7 @@ $news = umiHierarchy::getInstance()->getElement(20);
 
                         <div class="btns">
                             <a href="#" class="btn btn_blue">Заполнить бриф</a>
-                            <a href="#" class="btn btn_border">Подробнее</a>
+                            <a href="<?= $item['link'] ?>" class="btn btn_border">Подробнее</a>
                         </div>
                     </div>
                 </div>

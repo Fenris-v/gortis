@@ -1,0 +1,14 @@
+<?php
+/**
+ * Новость
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+if ($variables['parents'][0]->getId() === 13): ?>
+    <?= $this->render($variables, 'news/service/index') ?>
+<?php
+else: ?>
+<?php
+endif;
