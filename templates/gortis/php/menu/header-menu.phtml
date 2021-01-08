@@ -1,0 +1,17 @@
+<?php
+/**
+ * Меню в хэдере
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+?>
+
+<ul>
+    <?php
+    foreach ($variables as $item): ?>
+        <?= $this->render($item, 'menu/header-menu-item') ?>
+    <?php
+    endforeach; ?>
+</ul>

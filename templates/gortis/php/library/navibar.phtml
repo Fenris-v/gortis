@@ -1,0 +1,38 @@
+<?php
+/**
+ * Хлебные крошки + h1
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+$breadcrumbs = $this->macros('core', 'navibar')['items']; ?>
+
+<section class="s_breadcrumbs">
+    <div class="wrapper">
+        <h1 class="h1"><?= $variables['page']->getValue('h1') ?></h1>
+
+        <div class="breadcrumbs">
+            <ul>
+                <li>
+                    <a href="<?= $this->getHomePageUrl() ?>">Главная</a>
+                </li>
+
+                <?php
+                foreach ($breadcrumbs as $key => $crumb): ?>
+                    <li>
+                        <?php
+                        if ($key === array_key_last($breadcrumbs)): ?>
+                            <span><?= $crumb['text'] ?></span>
+                        <?php
+                        else: ?>
+                            <a href="<?= $crumb['link'] ?>"><?= $crumb['text'] ?></a>
+                        <?php
+                        endif; ?>
+                    </li>
+                <?php
+                endforeach; ?>
+            </ul>
+        </div>
+    </div>
+</section>

@@ -1,2 +1,5 @@
 /.idea/
 /node_modules/
+/classes/
+/templates/gortis/css/.sass-cache/
+/templates/.htaccess

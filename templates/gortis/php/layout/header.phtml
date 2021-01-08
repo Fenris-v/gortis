@@ -1,0 +1,64 @@
+<?php
+/**
+ * Хедер
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+$settings = $this->getSettingsContainer();
+?>
+
+<header>
+    <div class="wrapper">
+        <div class="header">
+            <a href="/" class=" logo">
+                <img src="<?= $this->macros(
+                    'system',
+                    'makeThumbnailFull',
+                    [$settings->getValue('logo')->getFilePath(), 210, 'auto']
+                )['src'] ?>"
+                     title="<?= $settings->getValue('logo')->getTitle() ?>"
+                     alt="<?= $settings->getValue('logo')->getAlt() ?>">
+                <?= $settings->getValue('under_logo') ?>
+            </a>
+
+            <nav class="header__nav">
+                <?= $this->render($this->getMainMenu()['item'], 'menu/header-menu') ?>
+            </nav>
+
+            <div class="header__contacts">
+                <div class="header__contacts__time">
+                    <?= $settings->getValue('work_time') ?>
+                </div>
+
+                <a href="tel:<?= $settings->getValue('phone') ?>" class="phone">
+                    <?= $settings->getValue('phone') ?>
+                </a>
+
+                <a href="#" class="callback">
+                    Обратный звонок
+                    <img src="<?= $this->getCommonVar('base') ?>images/down-arrow.png" alt="icon">
+                </a>
+            </div>
+
+            <div class="header__hamburger">
+                <a class="adaptive-menu-toggle" href="#">
+                    <span class="menu-toggle-inner">
+                        <span class="menu-toggle-line menu-toggle-line--1"></span>
+                        <span class="menu-toggle-line menu-toggle-line--2"></span>
+                        <span class="menu-toggle-line menu-toggle-line--3"></span>
+                        <span class="menu-toggle-line menu-toggle-line--4"></span>
+                        <span class="menu-toggle-line menu-toggle-line--5"></span>
+                    </span>
+                </a>
+            </div>
+
+
+            <nav class="headerNav_adaptive">
+                <?= $this->render($this->getMainMenu()['item'], 'menu/header-menu') ?>
+            </nav>
+        </div>
+    </div>
+    <hr>
+</header>

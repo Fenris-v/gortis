@@ -1,0 +1,114 @@
+<?php
+/**
+ * Футер
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+$settings = $this->getSettingsContainer();
+$socials = $this->arraySort($settings->social_links, 'float');
+$socialIcons = $settings->social_icons;
+?>
+
+<footer>
+    <div class="footer_top">
+        <div class="wrapper">
+            <div class="footer">
+                <div class="footer__info">
+                    <a href="#" class="logo">
+                        <img src="<?= $this->macros(
+                            'system',
+                            'makeThumbnailFull',
+                            [$settings->getValue('logo')->getFilePath(), 210, 'auto']
+                        )['src'] ?>"
+                             title="<?= $settings->getValue('logo')->getTitle() ?>"
+                             alt="<?= $settings->getValue('logo')->getAlt() ?>">
+                    </a>
+
+                    <div class="footer__info__contacts">
+                        <div class="header__contacts__time">
+                            <?= $settings->getValue('work_time') ?>
+                        </div>
+
+                        <a href="tel:<?= $settings->getValue('phone') ?>" class="phone">
+                            <?= $settings->getValue('phone') ?>
+                        </a>
+                    </div>
+
+                    <a href="#" class="btn btn_blue">
+                        <div>
+                            Обратный звонок
+                            <img src="<?= $this->getCommonVar('base') ?>images/down-arrow-white.png" alt="icon">
+                        </div>
+                    </a>
+
+                    <div class="social">
+                        <?php
+                        $socialCounter = 0;
+                        foreach ($socials as $social): ?>
+                            <a href="<?= $this->getObjectById($social['rel'])->getName() ?>">
+                                <img src="<?= $this->macros(
+                                    'system',
+                                    'makeThumbnailFull',
+                                    [$socialIcons[$socialCounter]->getFilePath(), 50, 'auto']
+                                )['src'] ?>"
+                                     title="<?= $socialIcons[$socialCounter]->getTitle() ?>"
+                                     alt="<?= $socialIcons[$socialCounter]->getAlt() ?>">
+                            </a>
+                            <?php
+                            $socialCounter++;
+                        endforeach; ?>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="footer__nav">
+                    <nav>
+                        <?= $this->render($this->getMainMenu()['item'], 'menu/footer-menu') ?>
+                    </nav>
+
+                    <div class="footer__nav__menu">
+                        <div class="footer__nav__menu__title">
+                            Услуги:
+                        </div>
+
+                        <?= $this->render($this->macros('menu', 'draw', ['services'])['item'], 'menu/footer-menu') ?>
+                    </div>
+
+                    <div class="footer__nav__menu">
+                        <div class="footer__nav__menu__title">
+                            Технологии:
+                        </div>
+
+                        <?= $this->render(
+                            $this->macros('menu', 'draw', ['technologies'])['item'],
+                            'menu/footer-menu'
+                        ) ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer_bottom">
+        <div class="wrapper">
+            <div class="copyright">
+                2012 - 2020 © Все права защищены
+            </div>
+            <div class="links">
+                <a href="#">Политика конфиденциальности</a>
+                <a href="#">Пользовательское соглашение</a>
+            </div>
+            <div class="developer">
+                Разработка сайта -
+                <a href="https://petersburg-studio.com/">Studio Peterburg</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="<?= $this->getCommonVar('base') ?>js/jquery.min.js" type="text/javascript"></script>
+<script src="<?= $this->getCommonVar('base') ?>js/slick.min.js" type="text/javascript"></script>
+<script src="<?= $this->getCommonVar('base') ?>js/scripts.js" type="text/javascript"></script>

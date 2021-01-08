@@ -1,0 +1,11 @@
+<?php
+/**
+ * Рендер основного контента
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+?>
+
+<?= $this->render($variables, "{$variables['module']}/{$variables['method']}") ?>

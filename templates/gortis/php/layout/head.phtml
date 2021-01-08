@@ -1,0 +1,33 @@
+<?php
+/**
+ * head
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+?>
+
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title><?= $variables['title'] ?></title>
+    <meta content="<?= $variables['meta']['description'] ?>" name="description"/>
+    <meta content="<?= $variables['meta']['keywords'] ?>" name="keywords">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+
+    <meta name="cmsmagazine" content="3b87f91765e204550bfffef42f6cbbed"/>
+    <meta name="author" content="petersburg-studio.com">
+    <meta name="copyright" content="petersburg-studio.com">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="<?= $this->getCommonVar('base') ?>css/style.css" rel="stylesheet">
+
+    <link href="#" rel="shortcut icon">
+    <meta content="petersburg-studio.com" name="author">
+</head>
+<body>

@@ -1,0 +1,29 @@
+<?php
+/**
+ * Элемент меню в хэдере
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+?>
+
+<li>
+    <a href="<?= $variables['link'] ?>">
+        <?= $variables['name'] ?>
+        <?= isset($variables['sub_menu'])
+            ? '<img src="' . $this->getCommonVar('base') . 'images/right-arrow.png" alt="icon">'
+            : '' ?>
+    </a>
+    <?php
+    if (isset($variables['sub_menu'])): ?>
+        <ul class="submenu">
+            <?php
+            foreach ($variables['sub_menu']['item'] as $subItem): ?>
+                <?= $this->render($subItem, 'menu/header-menu-item') ?>
+            <?php
+            endforeach; ?>
+        </ul>
+    <?php
+    endif; ?>
+</li>

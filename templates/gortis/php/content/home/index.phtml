@@ -1,0 +1,223 @@
+<?php
+/**
+ * Главная страница
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+$settings = $this->getSettingsContainer();
+$news = umiHierarchy::getInstance()->getElement(20);
+?>
+
+<section class="s_firstScreen">
+    <div class="wrapper">
+        <div class="firstScreen">
+            <div class="firstScreen_top">
+                <h1><?= $variables['page']->getValue('h1') ?></h1>
+                <div class="firstScreen_top__container">
+                    <div>
+                        <?= $variables['page']->getValue('under_title') ?>
+                    </div>
+
+                    <a href="#">
+                        <img src="<?= $this->getCommonVar('base') ?>images/down-arrow-light.png" alt="icon">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="firstScreen_bottom" style="background: url(<?= $this->macros(
+        'system',
+        'makeThumbnailFull',
+        [$variables['page']->getValue('banner')->getFilePath(), 1920, 'auto']
+    )['src'] ?>) no-repeat 50%;">
+        <div class="blur"></div>
+        <div class="wrapper">
+            <div class="firstScreen_bottom__title">
+                <?= $settings->getValue('company_name') ?>
+            </div>
+
+            <img src="<?= $this->getCommonVar('base') ?>images/obj.png" alt="icon" class="firstScreen__logo">
+
+            <div class="firstScreen_bottom__items">
+                <?php
+                foreach ($variables['page']->getValue('banner_statistic') as $item): ?>
+                    <div class="firstScreen_bottom__items__item">
+                        <?= $this->getObjectById($item)->getValue('text') ?>
+                    </div>
+                <?php
+                endforeach; ?>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="s_center">
+    <div class="wrapper">
+        <div class="center" style="background: url(<?= $this->macros(
+            'system',
+            'makeThumbnailFull',
+            [$variables['page']->getValue('banner_center')->getFilePath(), 1200, 'auto']
+        )['src'] ?>) center top no-repeat">
+            <div class="blur"></div>
+            <div class="center_top">
+                <?= $variables['page']->getValue('center_big_text') ?>
+            </div>
+
+            <div class="center_bottom">
+                <?= $variables['page']->getValue('center_small_text') ?>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="s_advantages">
+    <div class="wrapper">
+        <div class="advantages">
+            <?php
+            foreach ($variables['page']->getValue('advantages') as $item):
+                $advantage = $this->getObjectById($item); ?>
+                <div class="advantages__item">
+                    <div class="advantages__item__icon">
+                        <img src="<?= $this->macros(
+                            'system',
+                            'makeThumbnailFull',
+                            [$advantage->getValue('icon')->getFilePath(), 60, 'auto']
+                        )['src'] ?>"
+                             title="<?= $advantage->getValue('icon')->getTitle() ?>"
+                             alt="<?= $advantage->getValue('icon')->getAlt() ?>">
+                    </div>
+                    <div class="advantages__item__content">
+                        <div class="advantages__item__title">
+                            <?= $advantage->getName() ?>
+                        </div>
+                        <?= $advantage->getValue('text') ?>
+                    </div>
+                </div>
+            <?php
+            endforeach; ?>
+        </div>
+    </div>
+</section>
+
+<section class="s_about">
+    <div class="wrapper">
+        <div class="about">
+            <div class="about_left">
+                <div class="about_left__title">
+                    <?= $variables['page']->getValue('company_title') ?>
+                </div>
+
+                <div class="about_left__items">
+                    <?php
+                    foreach ($variables['page']->getValue('company_info') as $item):
+                        $obj = $this->getObjectById($item); ?>
+                        <div class="about_left__items__item">
+                            <div class="about_left__items__item__icon">
+                                <img src="<?= $this->macros(
+                                    'system',
+                                    'makeThumbnailFull',
+                                    [$obj->getValue('icon')->getFilePath(), 50, 'auto']
+                                )['src'] ?>" alt="icon">
+                            </div>
+                            <div class="about_left__items__item__content">
+                                <?= $obj->getValue('text') ?>
+                            </div>
+                        </div>
+                    <?php
+                    endforeach; ?>
+                </div>
+            </div>
+
+            <div class="about_right">
+                <img src="<?= $this->macros(
+                    'system',
+                    'makeThumbnailFull',
+                    [$variables['page']->getValue('photo')->getFilePath(), 460, 'auto']
+                )['src'] ?>"
+                     title="<?= $variables['page']->getValue('photo')->getTitle() ?>"
+                     alt="<?= $variables['page']->getValue('photo')->getAlt() ?>">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="s_services">
+    <div class="wrapper_fullHD wrapper">
+        <div class="services">
+            <?php
+            $servicesCounter = 1;
+            foreach ($this->macros('content', 'menu', [null, 1, 13], ['photo', 'icon', 'h1', 'readme'])['items'] as $item):
+                $childrenCount = umiHierarchy::getInstance()->getChildrenCount($item['id']); ?>
+                <div class="services__item" style="background: url(<?= $this->macros(
+                    'system',
+                    'makeThumbnailFull',
+                    [$item['extended']['properties'][0]->getValue()->getFilePath(), 480, 'auto']
+                )['src'] ?>) center center no-repeat">
+                    <div class="blur"></div>
+                    <div class="services__item__num">0<?= $servicesCounter ?></div>
+                    <img src="<?= $item['extended']['properties'][1]->getValue()->getFilePath(true) ?>"
+                         title="<?= $item['extended']['properties'][1]->getValue()->getTitle() ?>"
+                         alt="<?= $item['extended']['properties'][1]->getValue()->getAlt() ?>">
+                    <p><?= $item['extended']['properties'][2]->getValue() ?></p>
+                    <a href="#" class="btn btn_blue btn_mobile">Подробнее</a>
+
+                    <div class="services__item__more">
+                        <div class="services__item__more__title"><?= $item['extended']['properties'][2]->getValue() ?></div>
+                        <p><?= $item['extended']['properties'][3]->getValue() ?></p>
+                        <div class="services__item__more__offer">
+                            <?= $childrenCount ?>
+                            <?= $this->getDeclination($childrenCount) ?>
+                        </div>
+
+                        <div class="btns">
+                            <a href="#" class="btn btn_blue">Заполнить бриф</a>
+                            <a href="#" class="btn btn_border">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+                <?php
+                $servicesCounter++;
+            endforeach; ?>
+        </div>
+    </div>
+</section>
+
+<section class="s_news">
+    <div class="wrapper">
+        <div class="news">
+            <div class="news__title">
+                <h2 class="innerTitle"><?= $news->getName() ?></h2>
+                <a href="#">Читать все</a>
+            </div>
+
+            <div class="news__items">
+                <?php
+                foreach ($this->macros('news', 'lastlist', [20, null, 6], ['anons_pic', 'anons'])['items'] as $item): ?>
+                    <div class="news__items__item">
+                        <div class="news__items__item__img">
+                            <img src="<?= $this->macros(
+                                'system',
+                                'makeThumbnailFull',
+                                [$item['extended']['properties'][0]->getValue()->getFilePath(), 380, 'auto']
+                            )['src'] ?>" alt="photo">
+                            <div class="news__items__item__img__date">
+                                <img src="<?= $this->getCommonVar('base') ?>images/calendar.png" alt="icon">
+                                <?= $this->dateFormatter($item['publish_time']) ?>
+                            </div>
+                        </div>
+                        <a href="<?= $item['link'] ?>" class="news__items__item__title">
+                            <?= $item['name'] ?>
+                        </a>
+                        <div class="news__items__item__anons">
+                            <?= $item['extended']['properties'][1]->getValue() ?>
+                        </div>
+                    </div>
+                <?php
+                endforeach; ?>
+            </div>
+        </div>
+    </div>
+</section>

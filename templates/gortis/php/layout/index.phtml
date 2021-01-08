@@ -1,0 +1,24 @@
+<?php
+/**
+ * Индексный файл шаблона
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+?>
+
+<?= $this->render($variables, 'layout/head') ?>
+
+<div class="layout">
+    <?= $this->render($variables, 'layout/header') ?>
+
+    <?php
+    if ($variables['method'] !== 'notfound' && !$variables['is-default']): ?>
+        <?= $this->render($variables, 'library/navibar') ?>
+    <?php
+    endif; ?>
+
+    <?= $this->render($variables, 'layout/main') ?>
+    <?= $this->render($variables, 'layout/footer') ?>
+</div>

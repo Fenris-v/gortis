@@ -1,0 +1,15 @@
+<?php
+/**
+ * Страница контента
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+if ($variables['is-default']): ?>
+    <?= $this->render($variables, 'content/home/index') ?>
+<?php
+elseif ((int)$variables['pageId'] === 2): ?>
+    <?= $this->render($variables, 'content/about/index') ?>
+<?php
+endif;

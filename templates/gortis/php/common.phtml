@@ -1,0 +1,11 @@
+<?php
+/**
+ * Точка входа в шаблон
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+$this->initializeCommonVariables($variables); ?>
+
+<?= $this->render($variables, 'layout/index'); ?>

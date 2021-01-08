@@ -1,0 +1,109 @@
+<?php
+/**
+ * Страница о компании
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+?>
+
+<section class="s_company">
+    <div class="wrapper">
+        <div class="company">
+            <div class="company__desc">
+                <?= $variables['page']->getValue('spec_desc') ?>
+            </div>
+
+            <div class="company__items">
+                <?php
+                foreach ($variables['page']->getValue('spec_types') as $type):
+                    $obj = umiObjectsCollection::getInstance()->getObject($type); ?>
+                    <div class="company__items__item">
+                        <div class="company__items__item__icon">
+                            <img src="<?= $this->macros(
+                                'system',
+                                'makeThumbnailFull',
+                                [$obj->getValue('icon')->getFilePath(), 50, 'auto']
+                            )['src'] ?>"
+                                 title="<?= $obj->getValue('icon')->getTitle() ?>"
+                                 alt="<?= $obj->getValue('icon')->getAlt() ?>">
+                        </div>
+                        <?= $obj->getValue('text') ?>
+                    </div>
+                <?php
+                endforeach; ?>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="s_monitoring">
+    <div class="wrapper">
+        <div class="monitoring">
+            <div class="monitoring__content">
+                <div class="monitoring__content__title">
+                    <?= $variables['page']->getValue('monitor_title') ?>
+                </div>
+
+                <?= $variables['page']->getValue('monitor_top') ?>
+            </div>
+            <div class="monitoring__img">
+                <img src="<?= $this->macros(
+                    'system',
+                    'makeThumbnailFull',
+                    [$variables['page']->getValue('monitor_top_img')->getFilePath(), 550, 'auto']
+                )['src'] ?>"
+                     title="<?= $variables['page']->getValue('monitor_top_img')->getTitle() ?>"
+                     alt="<?= $variables['page']->getValue('monitor_top_img')->getAlt() ?>">
+            </div>
+        </div>
+
+        <div class="monitoring">
+            <div class="monitoring__content">
+                <?= $variables['page']->getValue('monitor_bottom') ?>
+
+                <a href="#">
+                    <img src="<?= $this->getCommonVar('base') ?>images/speak.png" alt="btn">
+                </a>
+            </div>
+            <div class="monitoring__img">
+                <img src="<?= $this->macros(
+                    'system',
+                    'makeThumbnailFull',
+                    [$variables['page']->getValue('monitor_bottom_img')->getFilePath(), 550, 'auto']
+                )['src'] ?>"
+                     title="<?= $variables['page']->getValue('monitor_top_img')->getTitle() ?>"
+                     alt="<?= $variables['page']->getValue('monitor_top_img')->getAlt() ?>">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="s_help">
+    <div class="wrapper">
+        <div class="help">
+            <div class="innerTitle">Наши специалисты готовы оказать помощь по следующим направлениям:</div>
+
+            <ul class="help__items">
+                <?php
+                foreach ($this->macros('content', 'menu', [null, 1, 13], ['h1', 'readme'])['items'] as $item): ?>
+                    <li>
+                        <div class="help__items__name">
+                            <a href="<?= $item['link'] ?>"><?= $item['extended']['properties'][0]->getValue() ?></a>
+                        </div>
+                        <div class="help__items__desc">
+                            <?= $item['extended']['properties'][1]->getValue() ?>
+                        </div>
+                        <div class="help__items__link">
+                            <a href="<?= $item['link'] ?>">
+                                <img src="<?= $this->getCommonVar('base') ?>images/down-arrow-light.png" alt="icon">
+                            </a>
+                        </div>
+                    </li>
+                <?php
+                endforeach; ?>
+            </ul>
+        </div>
+    </div>
+</section>

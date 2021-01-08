@@ -1,0 +1,21 @@
+<?php
+/**
+ * Меню в хэдере
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+?>
+
+<ul>
+    <?php
+    foreach ($variables as $item): ?>
+        <li>
+            <a href="<?= $item['link'] ?>">
+                <?= $item['name'] ?>
+            </a>
+        </li>
+    <?php
+    endforeach; ?>
+</ul>
