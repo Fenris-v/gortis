@@ -1,0 +1,17 @@
+<?php
+/**
+ * Поля формы
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+$field = $variables; ?>
+
+<div class="modal-form__row">
+    <input type="text"
+           name="<?= $field['input_name'] ?>"
+           placeholder="<?=$field['title'] ?>"
+           class="form-input <?=($field['name']=='nomer_telefona'? 'form-input--tel' : '')?>"
+           <?=$field['required']?>>
+</div>

@@ -13,11 +13,7 @@ $settings = $this->getSettingsContainer();
     <div class="wrapper">
         <div class="header">
             <a href="/" class=" logo">
-                <img src="<?= $this->macros(
-                    'system',
-                    'makeThumbnailFull',
-                    [$settings->getValue('logo')->getFilePath(), 210, 'auto']
-                )['src'] ?>"
+                <img src="<?= $settings->getValue('logo')->getFilePath(true) ?>"
                      title="<?= $settings->getValue('logo')->getTitle() ?>"
                      alt="<?= $settings->getValue('logo')->getAlt() ?>">
                 <?= $settings->getValue('under_logo') ?>
@@ -36,7 +32,7 @@ $settings = $this->getSettingsContainer();
                     <?= $settings->getValue('phone') ?>
                 </a>
 
-                <a href="#" class="callback">
+                <a href="#callback-modal" class="callback" data-fancybox-modal>
                     Обратный звонок
                     <img src="<?= $this->getCommonVar('base') ?>images/down-arrow.png" alt="icon">
                 </a>

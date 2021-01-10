@@ -1,0 +1,12 @@
+<?php
+/**
+ * Поля формы
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+$field = $variables; ?>
+
+<textarea name="<?= $field['input_name'] ?>" class="form-textarea"
+          placeholder="<?= $field['title'] ?>" <?= $field['required'] ?>></textarea>

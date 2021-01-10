@@ -13,9 +13,7 @@
             <div class="servicesBlock">
                 <ul>
                     <?php
-                    foreach (
-                        $this->macros('content', 'menu', [null, 1, 13], ['icon'])['items'] as $item
-                    ): ?>
+                    foreach ($this->macros('content', 'menu', [null, 1, 13], ['icon'])['items'] as $item): ?>
                         <li>
                             <div class="border">
                                 <a href="<?= $item['link'] ?>">
@@ -40,6 +38,6 @@
 
 <?php
 if ((int)$variables['pageId'] !== 13): ?>
-    <?= $this->render($variables, 'content/home/children') ?>
+    <?= $this->render($variables, 'news/children') ?>
 <?php
 endif;

@@ -1,0 +1,27 @@
+<?php
+/**
+ * Новость
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+?>
+
+<section class="s_service">
+    <div class="wrapper">
+        <div class="service">
+            <?php
+            if ($variables['page']->getValue('anons_pic')): ?>
+                <img src="<?= $this->macros(
+                    'system',
+                    'makeThumbnailFull',
+                    [$variables['page']->getValue('anons_pic')->getFilePath(), 1200, 'auto']
+                )['src'] ?>" alt="photo">
+            <?php
+            endif; ?>
+
+            <?= $variables['page']->getValue('content') ?>
+        </div>
+    </div>
+</section>

@@ -46,4 +46,13 @@ $(document).ready(() => {
             $(el[0]).css('display', 'none');
         }
     });
+
+    /**
+     * FANCYBOX
+     */
+    $('[data-fancybox-modal]').fancybox({
+        trapFocus: true,
+        autoFocus: false,
+        touch: false,
+    });
 });

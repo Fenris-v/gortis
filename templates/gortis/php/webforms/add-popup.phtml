@@ -1,0 +1,30 @@
+<?php
+/**
+ * Модалка для заказа обратного звонка
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+$form = (isset($variables['form-data'])) ? $variables['form-data'] : $variables;
+$action = $this->getCommonVar('pre_lang') . '/webforms/send/'; ?>
+
+<div id="callback-modal" class="modal modal--callback">
+    <div class="modal__title">Заказать обратный звонок</div>
+    <form method="post"
+          action="<?= $action ?>"
+          enctype="multipart/form-data"
+          class="modal-form"
+          data-form-ids="popup">
+        <?= $this->render($form, 'webforms/page/recipient_list') ?>
+        <?= $this->render($form, 'webforms/page/field_list-popup') ?>
+
+
+        <input type="hidden" name="system_form_id" value="<?= $form['form_id'] ?>" />
+        <input type="hidden" name="ref_onsuccess" value="<?= $variables['pre-lang'] ?>/webforms/posted/<?= $form['form_id'] ?>" />
+        <?= $this->render($form, 'webforms/notice') ?>
+        <div class="modal-form__row">
+            <input type="submit" class="form-submit btn btn_blue" value="Заказать звонок">
+        </div>
+    </form>
+</div>

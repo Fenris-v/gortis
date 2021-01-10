@@ -7,8 +7,7 @@
  */
 
 $settings = $this->getSettingsContainer();
-$news = umiHierarchy::getInstance()->getElement(20);
-?>
+$news = umiHierarchy::getInstance()->getElement(20); ?>
 
 <section class="s_firstScreen">
     <div class="wrapper">
@@ -81,11 +80,7 @@ $news = umiHierarchy::getInstance()->getElement(20);
                 $advantage = $this->getObjectById($item); ?>
                 <div class="advantages__item">
                     <div class="advantages__item__icon">
-                        <img src="<?= $this->macros(
-                            'system',
-                            'makeThumbnailFull',
-                            [$advantage->getValue('icon')->getFilePath(), 60, 'auto']
-                        )['src'] ?>"
+                        <img src="<?= $advantage->getValue('icon')->getFilePath(true) ?>"
                              title="<?= $advantage->getValue('icon')->getTitle() ?>"
                              alt="<?= $advantage->getValue('icon')->getAlt() ?>">
                     </div>
@@ -116,11 +111,7 @@ $news = umiHierarchy::getInstance()->getElement(20);
                         $obj = $this->getObjectById($item); ?>
                         <div class="about_left__items__item">
                             <div class="about_left__items__item__icon">
-                                <img src="<?= $this->macros(
-                                    'system',
-                                    'makeThumbnailFull',
-                                    [$obj->getValue('icon')->getFilePath(), 50, 'auto']
-                                )['src'] ?>" alt="icon">
+                                <img src="<?= $obj->getValue('icon')->getFilePath(true) ?>" alt="icon">
                             </div>
                             <div class="about_left__items__item__content">
                                 <?= $obj->getValue('text') ?>

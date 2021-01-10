@@ -12,4 +12,7 @@ if ($variables['is-default']): ?>
 elseif ((int)$variables['pageId'] === 2): ?>
     <?= $this->render($variables, 'content/about/index') ?>
 <?php
+else: ?>
+<?= $this->render($variables, 'content/page') ?>
+<?php
 endif;

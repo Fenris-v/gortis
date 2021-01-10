@@ -1,0 +1,14 @@
+<?php
+/**
+ * Поля формы
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+foreach ($variables['groups']['group'] as $group):
+    foreach ($group['fields'] as $field): ?>
+        <?= $this->render($field, "data/form_field/{$field['type']}-popup") ?>
+    <?php
+    endforeach;
+endforeach;

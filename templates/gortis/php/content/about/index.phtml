@@ -21,11 +21,7 @@
                     $obj = umiObjectsCollection::getInstance()->getObject($type); ?>
                     <div class="company__items__item">
                         <div class="company__items__item__icon">
-                            <img src="<?= $this->macros(
-                                'system',
-                                'makeThumbnailFull',
-                                [$obj->getValue('icon')->getFilePath(), 50, 'auto']
-                            )['src'] ?>"
+                            <img src="<?= $obj->getValue('icon')->getFilePath(true) ?>"
                                  title="<?= $obj->getValue('icon')->getTitle() ?>"
                                  alt="<?= $obj->getValue('icon')->getAlt() ?>">
                         </div>

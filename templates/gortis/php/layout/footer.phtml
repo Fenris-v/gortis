@@ -8,8 +8,7 @@
 
 $settings = $this->getSettingsContainer();
 $socials = $this->arraySort($settings->social_links, 'float');
-$socialIcons = $settings->social_icons;
-?>
+$socialIcons = $settings->social_icons; ?>
 
 <footer>
     <div class="footer_top">
@@ -17,11 +16,7 @@ $socialIcons = $settings->social_icons;
             <div class="footer">
                 <div class="footer__info">
                     <a href="#" class="logo">
-                        <img src="<?= $this->macros(
-                            'system',
-                            'makeThumbnailFull',
-                            [$settings->getValue('logo')->getFilePath(), 210, 'auto']
-                        )['src'] ?>"
+                        <img src="<?= $settings->getValue('logo')->getFilePath() ?>"
                              title="<?= $settings->getValue('logo')->getTitle() ?>"
                              alt="<?= $settings->getValue('logo')->getAlt() ?>">
                     </a>
@@ -36,7 +31,7 @@ $socialIcons = $settings->social_icons;
                         </a>
                     </div>
 
-                    <a href="#" class="btn btn_blue">
+                    <a href="#callback-modal" class="btn btn_blue" data-fancybox-modal>
                         <div>
                             Обратный звонок
                             <img src="<?= $this->getCommonVar('base') ?>images/down-arrow-white.png" alt="icon">
@@ -48,11 +43,7 @@ $socialIcons = $settings->social_icons;
                         $socialCounter = 0;
                         foreach ($socials as $social): ?>
                             <a href="<?= $this->getObjectById($social['rel'])->getName() ?>">
-                                <img src="<?= $this->macros(
-                                    'system',
-                                    'makeThumbnailFull',
-                                    [$socialIcons[$socialCounter]->getFilePath(), 50, 'auto']
-                                )['src'] ?>"
+                                <img src="<?= $socialIcons[$socialCounter]->getFilePath() ?>"
                                      title="<?= $socialIcons[$socialCounter]->getTitle() ?>"
                                      alt="<?= $socialIcons[$socialCounter]->getAlt() ?>">
                             </a>
@@ -110,5 +101,6 @@ $socialIcons = $settings->social_icons;
 </footer>
 
 <script src="<?= $this->getCommonVar('base') ?>js/jquery.min.js" type="text/javascript"></script>
+<script src="<?= $this->getCommonVar('base') ?>js/jquery.fancybox.min.js" type="text/javascript"></script>
 <script src="<?= $this->getCommonVar('base') ?>js/slick.min.js" type="text/javascript"></script>
 <script src="<?= $this->getCommonVar('base') ?>js/scripts.js" type="text/javascript"></script>

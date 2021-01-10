@@ -6,14 +6,14 @@
  * @var array                                               $variables
  */
 
-$services = $this->macros('news', 'lastlist', [$variables['pageId'], null, 4], ['anons_pic', 'anons']);
+$items = $this->macros('news', 'lastlist', [$variables['pageId'], null, 4], ['anons_pic', 'anons']);
 
-if (!empty($services)): ?>
+if (!empty($items)): ?>
     <section class="s_articles">
         <div class="wrapper">
-            <div class="articles" <?= $services['total'] > $services['per_page'] ? 'style="margin-bottom: 20px;"' : '' ?>>
+            <div class="articles" <?= $items['total'] > $items['per_page'] ? 'style="margin-bottom: 20px;"' : '' ?>>
                 <?php
-                foreach ($services['items'] as $item): ?>
+                foreach ($items['items'] as $item): ?>
                     <div class="articles__item">
                         <img src="<?= $this->macros(
                             'system',
@@ -41,7 +41,7 @@ if (!empty($services)): ?>
             </div>
 
             <?= $this->render(
-                ['request-uri' => $variables['request-uri'], 'services' => $services],
+                ['request-uri' => $variables['request-uri'], 'services' => $items],
                 'library/pagination'
             ) ?>
         </div>
