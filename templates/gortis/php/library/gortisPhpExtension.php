@@ -17,6 +17,18 @@ class gortisPhpExtension extends ViewPhpExtension
     }
 
     /**
+     * Возвращает опрос, привязанный к странице (результат работы макроса vote::poll())
+     * @param int $pageId идентификатор страницы
+     * @return array
+     * @throws Exception
+     */
+    public function getVote($pageId) {
+        $data = $this->macros('vote', 'poll', [$pageId]);
+        $data = is_array($data) ? $data : [];
+        return $data;
+    }
+
+    /**
      * Возвращает объект настроек сайта
      *
      * @return iUmiObject|bool
@@ -112,5 +124,24 @@ class gortisPhpExtension extends ViewPhpExtension
     public function getHomePageUrl(): string
     {
         return $this->getTemplateEngine()->getCommonVar('pre_lang') . '/';
+    }
+
+    /** ***************************** */
+    /**
+     * Определяет, нужно ли выводить форму опроса
+     * @param array $variables результат работы макроса vote:poll()
+     * @return bool
+     */
+    public function canShowVoteForm(array $variables) {
+        return isset($variables['items'][0]['id']);
+    }
+
+    /**
+     * Определяет, нужно ли вывести результаты опроса
+     * @param array $variables результат работы макроса vote:poll()
+     * @return bool
+     */
+    public function canShowVoteResults(array $variables) {
+        return isset($variables['items'][0]['score']);
     }
 }

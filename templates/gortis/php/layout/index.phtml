@@ -14,7 +14,7 @@
     <?= $this->render($variables, 'layout/header') ?>
 
     <?php
-    if ($variables['method'] !== 'notfound' && !$variables['is-default']): ?>
+    if ($variables['method'] !== 'notfound' && isset($variables['is-default']) && !$variables['is-default']): ?>
         <?= $this->render($variables, 'library/navibar') ?>
     <?php
     endif; ?>

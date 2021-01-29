@@ -83,7 +83,7 @@
 
             <ul class="help__items">
                 <?php
-                foreach ($this->macros('content', 'menu', [null, 1, 13], ['h1', 'readme'])['items'] as $item): ?>
+                foreach ($this->macros('content', 'menu', [null, 1, 13], ['h1', 'anons'])['items'] as $item): ?>
                     <li>
                         <div class="help__items__name">
                             <a href="<?= $item['link'] ?>"><?= $item['extended']['properties'][0]->getValue() ?></a>

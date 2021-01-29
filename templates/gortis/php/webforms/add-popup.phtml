@@ -19,9 +19,8 @@ $action = $this->getCommonVar('pre_lang') . '/webforms/send/'; ?>
         <?= $this->render($form, 'webforms/page/recipient_list') ?>
         <?= $this->render($form, 'webforms/page/field_list-popup') ?>
 
-
         <input type="hidden" name="system_form_id" value="<?= $form['form_id'] ?>" />
-        <input type="hidden" name="ref_onsuccess" value="<?= $variables['pre-lang'] ?>/webforms/posted/<?= $form['form_id'] ?>" />
+        <input type="hidden" name="ref_onsuccess" value="<?= $this->getCommonVar('pre_lang') ?>/webforms/posted/<?= $form['form_id'] ?>" />
         <?= $this->render($form, 'webforms/notice') ?>
         <div class="modal-form__row">
             <input type="submit" class="form-submit btn btn_blue" value="Заказать звонок">

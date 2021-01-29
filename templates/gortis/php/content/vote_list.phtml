@@ -1,0 +1,25 @@
+<?php
+/**
+ * Список опросов
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+$voteList = $this->macros('content', 'menu', [null, 1, $variables['pageId']]); ?>
+
+<section class="s_voteList">
+    <div class="wrapper">
+        <div class="voteList">
+            <ul>
+                <?php
+                foreach ($voteList['items'] as $vote): ?>
+                    <li>
+                        <a href="<?= $vote['link'] ?>"><?= $vote['name'] ?></a>
+                    </li>
+                <?php
+                endforeach; ?>
+            </ul>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,26 @@
+<?php
+/**
+ * Вакансии
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+$menu = $this->macros('content', 'menu', [null, 1, 52]);
+
+if ($menu): ?>
+    <section class="s_vacancy">
+        <div class="wrapper">
+            <ul class="vacancy__list">
+                <?php
+                foreach ($menu['items'] as $item): ?>
+                    <li>
+                        <a href="<?= $item['link'] ?>"><?= $item['text'] ?></a>
+                    </li>
+                <?php
+                endforeach; ?>
+            </ul>
+        </div>
+    </section>
+<?php
+endif;

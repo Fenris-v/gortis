@@ -6,6 +6,7 @@
  * @var array                                               $variables
  */
 
+$items = $this->macros('content', 'menu', [null, 1, $variables['pageId']], ['anons']);
 ?>
 
 <main class="container wrapper">
@@ -21,28 +22,41 @@
             <?php
             endif; ?>
 
-            <div class="innerTitle">
-                <?= $variables['page']->getValue('additional_title') ?>
-            </div>
-
-            <div class="service__quote">
-                <div class="service__quote__icon">
-                    <img src="<?= $this->getCommonVar('base') ?>images/left-quote.png" alt="icon">
+            <?php if($variables['page']->getValue('additional_title')):?>
+                <div class="innerTitle">
+                    <?= $variables['page']->getValue('additional_title') ?>
                 </div>
-                <p class="service__quote__content">
-                    <?= $variables['page']->getValue('quote') ?>
-                </p>
+            <?php endif;?>
+
+            <?php if($variables['page']->getValue('quote')):?>
+                <div class="service__quote">
+                    <div class="service__quote__icon">
+                        <img src="<?= $this->getCommonVar('base') ?>images/left-quote.png" alt="icon">
+                    </div>
+                    <p class="service__quote__content">
+                        <?= $variables['page']->getValue('quote') ?>
+                    </p>
+                </div>
+            <?php endif;?>
+
+            <?php if($variables['page']->getValue('content')):?>
+                <div class="service__content">
+                    <?= $variables['page']->getValue('content') ?>
+                </div>
+            <?php endif;?>
+
+            <?php if ($items): ?>
+                <div class="service__items">
+                    <?= $this->render($items, 'news/service/similar') ?>
+<!--                    --><?php //if ($variables['page']->getValue('similar_services')): ?>
+<!--                    --><?php //endif; ?>
+                </div>
+            <?php endif; ?>
+
+            <div class="service__content subcontent">
+                <?= $variables['page']->getValue('subcontent') ?>
             </div>
 
-            <?= $variables['page']->getValue('content') ?>
-
-            <div class="service__items">
-                <?php
-                if ($variables['page']->getValue('similar_services')): ?>
-                    <?= $this->render($variables['page']->getValue('similar_services'), 'news/service/similar') ?>
-                <?php
-                endif; ?>
-            </div>
         </div>
     </section>
 

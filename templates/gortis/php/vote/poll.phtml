@@ -1,0 +1,15 @@
+<?php
+/**
+ * Выводит опрос, либо его результаты.
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+$vote = $this->getVote($variables['pageId']); ?>
+
+<section class="s_vote">
+    <div class="wrapper">
+        <?= $this->render($vote, 'vote/show_vote') ?>
+    </div>
+</section>

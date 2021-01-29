@@ -1,0 +1,35 @@
+<?php
+/**
+ * Результаты опроса.
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ * @var array                                               $voteOptions
+ */
+
+$voteOptions = $variables['items'];
+?>
+
+<h3 class="block_capt up">
+    <?= $this->escape($variables['text']) ?>
+</h3>
+
+<div class="radio_form">
+    <div class="result_interview">
+        <?php
+        foreach ($voteOptions as $option): ?>
+            <div class="row">
+                <div class="text">
+                    <span><?= $this->escape($option['item_name']) ?></span>
+                </div>
+
+                <div class="result clearfix">
+                    <div class="result_range"></div>
+
+                    <span class="result_num"><?= $option['score-rel'] ?>%</span>
+                </div>
+            </div>
+        <?php
+        endforeach; ?>
+    </div>
+</div>

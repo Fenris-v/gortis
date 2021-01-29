@@ -25,8 +25,10 @@
 
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <?php $websalt = '26-01-21';?>
     <link href="<?= $this->getCommonVar('base') ?>css/jquery.fancybox.min.css" rel="stylesheet">
-    <link href="<?= $this->getCommonVar('base') ?>css/style.css" rel="stylesheet">
+    <link href="<?= $this->getCommonVar('base') ?>css/style.css?<?=$websalt?>" rel="stylesheet">
 
     <link href="#" rel="shortcut icon">
     <meta content="petersburg-studio.com" name="author">

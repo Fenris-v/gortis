@@ -6,15 +6,26 @@
  * @var array                                               $variables
  */
 
-$items = $this->macros('news', 'lastlist', [$variables['pageId'], null, 4], ['anons_pic', 'anons']);
+if ((int)$variables['pageId'] === 13) {
+    $items = $this->macros('news', 'lastlist', [34, null, 4], ['anons_pic', 'anons']);
+} else {
+    $items = $this->macros('news', 'lastlist', [$variables['pageId'], null, 4], ['anons_pic', 'anons']);
+}
 
 if (!empty($items)): ?>
     <section class="s_articles">
         <div class="wrapper">
             <div class="articles" <?= $items['total'] > $items['per_page'] ? 'style="margin-bottom: 20px;"' : '' ?>>
                 <?php
+                if ((int)$variables['pageId'] === 13): ?>
+                    <h2>Технологии</h2>
+                <?php
+                endif;
+
                 foreach ($items['items'] as $item): ?>
                     <div class="articles__item">
+                    <?php
+                    if ($item['extended']['properties'][0]->getValue()): ?>
                         <img src="<?= $this->macros(
                             'system',
                             'makeThumbnailFull',
@@ -22,6 +33,7 @@ if (!empty($items)): ?>
                         )['src'] ?>"
                              title="<?= $item['extended']['properties'][0]->getValue()->getTitle() ?>"
                              alt="<?= $item['extended']['properties'][0]->getValue()->getAlt() ?>">
+                    <?php endif; ?>
 
                         <div class="articles__item__content">
                             <a href="<?= $item['link'] ?>" class="articles__item__content__title">

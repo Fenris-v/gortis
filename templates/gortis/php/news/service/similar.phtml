@@ -6,9 +6,9 @@
  * @var array                                               $variables
  */
 
-foreach ($variables as $service): ?>
+foreach ($variables['items'] as $service): ?>
 
-    <a href="<?= umiHierarchy::getInstance()->getPathById($service->getId()) ?>" class="service__items__item">
+    <a href="<?= $service['link'] ?>" class="service__items__item">
         <div class="border">
             <div class="help__items__link">
                 <p>
@@ -17,9 +17,9 @@ foreach ($variables as $service): ?>
             </div>
             <div class="service__items__item__content">
                 <div class="service__items__item__content__title">
-                    <?= $service->getName(); ?>
+                    <?= $service['name']; ?>
                 </div>
-                <?= $service->getValue('anons') ?>
+                <?= $service['extended']['properties'][0]->getValue() ?>
             </div>
         </div>
     </a>

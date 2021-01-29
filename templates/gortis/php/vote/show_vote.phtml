@@ -1,0 +1,17 @@
+<?php
+/**
+ * Выводит опрос, либо его результаты.
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                                   $variables
+ */
+
+$vote = $variables;
+
+if ($this->canShowVoteForm($vote)): ?>
+    <?= $this->render($vote, 'vote/form') ?>
+<?php
+elseif ($this->canShowVoteResults($vote)): ?>
+    <?= $this->render($vote, 'vote/results') ?>
+<?php
+endif;

@@ -1,0 +1,29 @@
+<?php
+/**
+ * Партнер
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+$images = $variables['page']->getValue('images'); ?>
+
+<section class="s_partner">
+    <div class="wrapper">
+        <div class="partner">
+            <?php
+            if (!empty($images)):
+                foreach ($images as $img): ?>
+                    <a href="<?= $img->getFilePath(true) ?>" data-fancybox="gallery">
+                        <img src="<?= $this->macros(
+                            'system',
+                            'makeThumbnailFull',
+                            [$img->getFilePath(), 300, 'auto']
+                        )['src'] ?>" alt="">
+                    </a>
+                <?php
+                endforeach;
+            endif; ?>
+        </div>
+    </div>
+</section>

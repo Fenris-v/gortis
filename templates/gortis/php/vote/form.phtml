@@ -1,0 +1,33 @@
+<?php
+/**
+ * Форма опроса.
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ * @var array                                               $voteOptions
+ */
+
+$voteOptions = $variables['items']; ?>
+
+<h3 class="block_capt up">
+    <?= $this->escape($variables['text']) ?>
+</h3>
+
+<div class="radio_form">
+    <form id="post_vote" data-vote_id="<?= $variables['id'] ?>">
+        <?php
+        foreach ($voteOptions as $index => $option): ?>
+            <div>
+                <label>
+                    <input type="radio" name="answer" required id="var_<?= $index ?>"
+                           value="<?= $option['id'] ?>"/>
+                    <span></span>
+                    <span><?= $this->escape($option['item_name']) ?></span>
+                </label>
+            </div>
+        <?php
+        endforeach; ?>
+
+        <input type="submit" value="Проголосовать" class="btn btn_blue"/>
+    </form>
+</div>

@@ -18,9 +18,7 @@
                             <div class="border">
                                 <a href="<?= $item['link'] ?>">
                                     <div class="servicesBlock__icon">
-                                        <img src="<?= $item['extended']['properties'][0]->getValue()->getFilePath(
-                                            true
-                                        ) ?>"
+                                        <img src="<?= $item['extended']['properties'][0]->getValue()->getFilePath(true) ?? '' ?>"
                                              alt="<?= $item['extended']['properties'][0]->getValue()->getAlt() ?>"
                                              title="<?= $item['extended']['properties'][0]->getValue()->getTitle() ?>">
                                     </div>
@@ -37,7 +35,7 @@
     </section>
 
 <?php
-if ((int)$variables['pageId'] !== 13): ?>
+if ((int)$variables['pageId'] === 13): ?>
     <?= $this->render($variables, 'news/children') ?>
 <?php
 endif;

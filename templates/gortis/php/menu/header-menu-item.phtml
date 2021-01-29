@@ -9,15 +9,14 @@
 ?>
 
 <li>
-    <a href="<?= $variables['link'] ?>">
+    <a href="<?= $variables['link'] ?>" class="adaptive-menu__link <?php if (isset($variables['sub_menu'])) echo 'has_child' ?>">
         <?= $variables['name'] ?>
         <?= isset($variables['sub_menu'])
             ? '<img src="' . $this->getCommonVar('base') . 'images/right-arrow.png" alt="icon">'
             : '' ?>
     </a>
-    <?php
-    if (isset($variables['sub_menu'])): ?>
-        <ul class="submenu">
+    <?php if (isset($variables['sub_menu'])): ?>
+        <ul class="submenu menu_2levelList">
             <?php
             foreach ($variables['sub_menu']['item'] as $subItem): ?>
                 <?= $this->render($subItem, 'menu/header-menu-item') ?>

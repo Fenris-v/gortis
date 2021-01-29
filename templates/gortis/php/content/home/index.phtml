@@ -19,7 +19,7 @@ $news = umiHierarchy::getInstance()->getElement(20); ?>
                         <?= $variables['page']->getValue('under_title') ?>
                     </div>
 
-                    <a href="#">
+                    <a href="/uslugi/">
                         <img src="<?= $this->getCommonVar('base') ?>images/down-arrow-light.png" alt="icon">
                     </a>
                 </div>
@@ -27,12 +27,15 @@ $news = umiHierarchy::getInstance()->getElement(20); ?>
         </div>
     </div>
 
-    <div class="firstScreen_bottom" style="background: url(<?= $this->macros(
-        'system',
-        'makeThumbnailFull',
-        [$variables['page']->getValue('banner')->getFilePath(), 1920, 'auto']
-    )['src'] ?>) no-repeat 50%;">
-        <div class="blur"></div>
+    <?php
+    /*<div class="firstScreen_bottom" style="background: url(<?= $this->macros(
+           'system',
+           'makeThumbnailFull',
+           [$variables['page']->getValue('banner')->getFilePath(), 1920, 'auto']
+       )['src'] ?>) no-repeat 50%;">
+   <!--        <div class="blur"></div>--> */ ?>
+
+    <div class="firstScreen_bottom" style="background: url(<?= $variables['page']->banner ?>) no-repeat 50%;">
         <div class="wrapper">
             <div class="firstScreen_bottom__title">
                 <?= $settings->getValue('company_name') ?>
@@ -135,12 +138,32 @@ $news = umiHierarchy::getInstance()->getElement(20); ?>
     </div>
 </section>
 
+<section class="s_firm">
+    <div class="wrapper">
+        <div class="firm">
+            <div class="firm_left">
+                <?= $variables['page']->getValue('left_text') ?>
+            </div>
+            <div class="firm_right">
+                <?= $variables['page']->getValue('right_text') ?>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="s_services">
     <div class="wrapper_fullHD wrapper">
         <div class="services">
             <?php
             $servicesCounter = 1;
-            foreach ($this->macros('menu', 'draw', ['main_services'], ['photo', 'icon', 'h1', 'readme'])['item'] as $item):
+            foreach (
+                $this->macros(
+                    'menu',
+                    'draw',
+                    ['main_services'],
+                    ['photo', 'icon', 'h1', 'anons']
+                )['item'] as $item
+            ):
                 $childrenCount = umiHierarchy::getInstance()->getChildrenCount($item['id']); ?>
                 <div class="services__item" style="background: url(<?= $this->macros(
                     'system',
@@ -153,18 +176,21 @@ $news = umiHierarchy::getInstance()->getElement(20); ?>
                          title="<?= $item['extended']['properties'][1]->getValue()->getTitle() ?>"
                          alt="<?= $item['extended']['properties'][1]->getValue()->getAlt() ?>">
                     <p><?= $item['extended']['properties'][2]->getValue() ?></p>
-                    <a href="#" class="btn btn_blue btn_mobile">Подробнее</a>
+                    <a href="<?= $item['link'] ?>" class="btn btn_blue btn_mobile">Подробнее</a>
 
                     <div class="services__item__more">
-                        <div class="services__item__more__title"><?= $item['extended']['properties'][2]->getValue() ?></div>
+                        <div class="services__item__more__title"><?= $item['extended']['properties'][2]->getValue(
+                            ) ?></div>
                         <p><?= $item['extended']['properties'][3]->getValue() ?></p>
                         <div class="services__item__more__offer">
-                            <?= $childrenCount ?>
-                            <?= $this->getDeclination($childrenCount) ?>
+                            <?php
+                            if ($childrenCount > 0): ?>
+                                <?= $childrenCount ?>
+                                <?= $this->getDeclination($childrenCount) ?>
+                            <?php
+                            endif; ?>
                         </div>
-
                         <div class="btns">
-                            <a href="#" class="btn btn_blue">Заполнить бриф</a>
                             <a href="<?= $item['link'] ?>" class="btn btn_border">Подробнее</a>
                         </div>
                     </div>
@@ -189,11 +215,13 @@ $news = umiHierarchy::getInstance()->getElement(20); ?>
                 foreach ($this->macros('news', 'lastlist', [20, null, 6], ['anons_pic', 'anons'])['items'] as $item): ?>
                     <div class="news__items__item">
                         <div class="news__items__item__img">
-                            <img src="<?= $this->macros(
-                                'system',
-                                'makeThumbnailFull',
-                                [$item['extended']['properties'][0]->getValue()->getFilePath(), 380, 'auto']
-                            )['src'] ?>" alt="photo">
+                            <?php if ($item['extended']['properties'][0]->getValue()): ?>
+                                <img src="<?= $this->macros(
+                                    'system',
+                                    'makeThumbnailFull',
+                                    [$item['extended']['properties'][0]->getValue()->getFilePath(), 380, 'auto']
+                                )['src'] ?>" alt="photo">
+                            <?php endif; ?>
                             <div class="news__items__item__img__date">
                                 <img src="<?= $this->getCommonVar('base') ?>images/calendar.png" alt="icon">
                                 <?= $this->dateFormatter($item['publish_time']) ?>

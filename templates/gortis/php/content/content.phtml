@@ -12,7 +12,26 @@ if ($variables['is-default']): ?>
 elseif ((int)$variables['pageId'] === 2): ?>
     <?= $this->render($variables, 'content/about/index') ?>
 <?php
+elseif ((int)$variables['pageId'] === 5): ?>
+    <?= $this->render($variables, 'content/contacts') ?>
+<?php
+elseif (
+    (int)$variables['pageId'] === 52 ||
+    (!empty($variables['parents']) && $variables['parents'][0]->getId() === 52)
+): ?>
+    <?= $this->render($variables, 'content/vacancy') ?>
+    <?= $this->render($variables, 'content/page') ?>
+<?php
+elseif ((int)$variables['pageId'] === 55): ?>
+    <?= $this->render($variables, 'content/partners') ?>
+<?php
+elseif (!empty($variables['parents']) && $variables['parents'][0]->getId() === 55): ?>
+    <?= $this->render($variables, 'content/partner') ?>
+<?php
+elseif ((int)$variables['pageId'] === 63): ?>
+<?= $this->render($variables, 'content/vote_list') ?>
+<?php
 else: ?>
-<?= $this->render($variables, 'content/page') ?>
+    <?= $this->render($variables, 'content/page') ?>
 <?php
 endif;

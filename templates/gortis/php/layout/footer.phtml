@@ -16,7 +16,7 @@ $socialIcons = $settings->social_icons; ?>
             <div class="footer">
                 <div class="footer__info">
                     <a href="#" class="logo">
-                        <img src="<?= $settings->getValue('logo')->getFilePath() ?>"
+                        <img src="<?= $settings->getValue('logo')->getFilePath(true) ?>"
                              title="<?= $settings->getValue('logo')->getTitle() ?>"
                              alt="<?= $settings->getValue('logo')->getAlt() ?>">
                     </a>
@@ -43,7 +43,7 @@ $socialIcons = $settings->social_icons; ?>
                         $socialCounter = 0;
                         foreach ($socials as $social): ?>
                             <a href="<?= $this->getObjectById($social['rel'])->getName() ?>">
-                                <img src="<?= $socialIcons[$socialCounter]->getFilePath() ?>"
+                                <img src="<?= $socialIcons[$socialCounter]->getFilePath(true) ?? '' ?>"
                                      title="<?= $socialIcons[$socialCounter]->getTitle() ?>"
                                      alt="<?= $socialIcons[$socialCounter]->getAlt() ?>">
                             </a>
@@ -94,7 +94,7 @@ $socialIcons = $settings->social_icons; ?>
             </div>
             <div class="developer">
                 Разработка сайта -
-                <a href="https://petersburg-studio.com/">Studio Peterburg</a>
+                <a href="https://petersburg-studio.com/" target="_blank">Studio-Petersburg</a>
             </div>
         </div>
     </div>
@@ -103,4 +103,5 @@ $socialIcons = $settings->social_icons; ?>
 <script src="<?= $this->getCommonVar('base') ?>js/jquery.min.js" type="text/javascript"></script>
 <script src="<?= $this->getCommonVar('base') ?>js/jquery.fancybox.min.js" type="text/javascript"></script>
 <script src="<?= $this->getCommonVar('base') ?>js/slick.min.js" type="text/javascript"></script>
-<script src="<?= $this->getCommonVar('base') ?>js/scripts.js" type="text/javascript"></script>
+<script src="<?= $this->getCommonVar('base') ?>js/scripts.js?26-01-21" type="text/javascript"></script>
+<script src="<?= $this->getCommonVar('base') ?>js/forms.js" type="text/javascript"></script>

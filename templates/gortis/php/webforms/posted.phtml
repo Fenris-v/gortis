@@ -1,0 +1,21 @@
+<?php
+/**
+ * Форма отправлена
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+?>
+
+<div class="wrapper">
+    <div id="form_append">
+
+        <div class="modal__title left">
+            <?= $variables['header'] ?>
+        </div>
+        <div class="container grey_border">
+            <?= $this->macros('webforms', 'posted', [$this->getRequest('param0')]) ?>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<?php
+/**
+ * Партнеры
+ *
+ * @var umiTemplaterPHP|ViewPhpExtension|gortisPhpExtension $this
+ * @var array                                               $variables
+ */
+
+$menu = $this->macros('content', 'menu', [null, 1, 55], ['logotip','images']);
+
+if ($menu): ?>
+    <section class="s_partners">
+        <div class="wrapper">
+            <div class="partners">
+                <?php
+                foreach ($menu['items'] as $item): ?>
+                    <a href="<?= $item['link'] ?>" class="partners__item">
+                        <?php
+                        $img = $item['extended']['properties'][0]->getValue() ?? '';
+                        if ($img): ?>
+                            <img src="<?= $this->macros(
+                                'system',
+                                'makeThumbnailFull',
+                                [$img->getFilePath(), 220, 'auto']
+                            )['src'] ?>" alt="">
+                        <?php
+                        else: ?>
+                            <?= $item['name'] ?>
+                        <?php
+                        endif; ?>
+                    </a>
+                <?php
+                endforeach; ?>
+            </div>
+        </div>
+    </section>
+<?php
+endif;
